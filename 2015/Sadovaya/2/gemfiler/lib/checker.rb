@@ -1,6 +1,6 @@
 class Checker
   def check_name_version(name, conditions)
-  text_string = ''
+    text_string = ''
     name_pattern = /\w/
     version_pattern = /((~>)|(>=)|(>)|(<=)|(<)) \d\.\d(\.\d)?.*/
     if !(name_pattern.match(name))

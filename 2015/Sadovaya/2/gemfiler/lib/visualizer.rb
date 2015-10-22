@@ -5,7 +5,7 @@ class Visualizer
     hash.each_pair do |version, flag|
       if flag
         puts "#{name} (#{version})".colorize(:red)
-      else 
+      else
         puts "#{name} (#{version})"
       end
     end

@@ -1,11 +1,18 @@
 require 'json'
+require 'net/http'
 
 class VersionFetcher
   def fetch(name)
-    result = `curl https://rubygems.org/api/v1/versions/#{name}.json`
-    json = JSON.parse(result)
-    json.map! { |s| s["number"]}
+    begin
+      result = Net::HTTP.get_response('rubygems.org', '/api/v1/versions/#{name}.json')
+      json = JSON.parse(result)
+      json.map! { |s| s['number'] }
+    end
+=begin
+    rescue StandartError => err
+      puts err.message
+      exit
+    end
+=end
   end
 end
-
-
